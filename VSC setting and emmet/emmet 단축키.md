@@ -1,0 +1,17 @@
+```
+h1
+h1+h2
+h1+h2+p{hello}
+p*10
+p{hello}*10
+h1+section>(h2+p)
+h${hello}*6
+h1.title
+h1#title
+p.hojun$$$$*5
+img[src="test.jpg"]
+img[src="test$$$.jpg"]*10
+h1{hello}+(section>(h2{hello}+p{hello}+img[src="test_$$$"]))*100
+ul>li.item$@3*5
+table>(tr>td*3)*4
+```
