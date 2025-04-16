@@ -81,3 +81,4 @@
     - htmltagwrap : html 태그를 쉽게 감싸주는 익스텐션입니다.
     - Auto Rename Tag: html 태그를 쉽게 수정할 수 있게 해주는 익스텐션입니다.
     - indent-rainbow: 들여쓰기를 색깔로 구분해주는 익스텐션입니다.
+    - Gitmoji: git commit 메시지를 이모지로 작성할 수 있게 해주는 익스텐션입니다.
