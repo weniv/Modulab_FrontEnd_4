@@ -3,7 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>비디오와 오디오</title>
+    <style>
+      body {
+        background-color: aqua;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <!-- 로컬 파일, 서버에 저장된 파일들을 재생하는데 사용합니다. -->
+    <!-- 1번 방법 VIDEO -->
+    <!-- <video
+      src="./src/rabbit.MOV"
+      width="450"
+      height="300"
+      controls
+      loop
+      poster="./src/rosy-icon.png"
+    ></video> -->
+    <!-- 2번 방법 - source -->
+    <!-- <video controls>
+      <source src="./src/rabbit.MOV" />
+    </video> -->
+    <audio src="./src/CatPurr.mp3" controls></audio>
+  </body>
 </html>

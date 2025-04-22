@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>select</title>
+  </head>
+  <body>
+    <select name="options" id="" size="2">
+      <option value="">옵션 선택하기</option>
+      <option value="1" selected>FE</option>
+      <option value="2">BE</option>
+    </select>
+    <fieldset>
+      <legend>여행 선호도</legend>
+      <input type="radio" id="mountain" name="travel" />
+      <label for="mountain">산</label>
+      <input type="radio" id="city" name="travel" />
+      <label for="city">도시</label>
+      <input type="radio" id="beach" name="travel" />
+      <label for="beach">바다</label>
+    </fieldset>
+    <textarea
+      rows="10"
+      cols="50"
+      minlength="10"
+      maxlength="100"
+      placeholder="10자 이상 100자 이하로 내용을 입력해주세요"
+    >
+안녕하세요</textarea
+    >
+    <a href="">안녕하세요</a>
+    <button type="button">버튼</button>
+    <button type="submit">제출버튼</button>
+    <button type="reset" disabled>초기화버튼</button>
+    <!-- 가급적 목적에 맞는 태그 사용하기 -->
+    <button id="selectBtn"></button>
+    <div id="button"></div>
+  </body>
+</html>
