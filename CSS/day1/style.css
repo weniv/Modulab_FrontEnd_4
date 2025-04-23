@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.btn,
+.link,
+.input,
+.custom-button {
+  padding: 10px 15px;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Focus 스타일 */
+/* 모든 포커스 상태(마우스,키보드 등) 스타일 적용 */
+/* 마우스이던, tab 이던 똑같은 스타일 제공 */
+/* 널리 알려진 문제점 : 마우스로 클릭 후에 해당 요소에서 마우스를 떠나도 다른 요소를 클릭하기 전까지 포커스 스타일이 유지된다. */
+/* 마우스 사용자에게 불필요한 시각적 피드백 제공 */
+.btn:focus,
+.link:focus,
+.input:focus,
+.custom-button:focus {
+  /* outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: red; */
+}
+
+/* Focus-visible 스타일 */
+/* 키보드 포커스를 받는 경우에만 적용할 스타일 */
+/* 마우스 클릭이나, 터치로 포커스를 가질 경우에는 적용 x */
+/* 키보드 사용자, 마우스 사용자 둘다 만족시키는 디자인이 가능하다. */
+
+.btn:focus-visible,
+.link:focus-visible,
+.input:focus-visible,
+.custom-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  border-color: red;
+}
+
+/* 구체적인 스타일 부여 */
+.btn {
+  background-color: skyblue;
+  color: white;
+  cursor: pointer;
+}
+
+.link {
+  background-color: transparent;
+  color: skyblue;
+  text-decoration: none;
+}
+
+.input {
+  background-color: white;
+}
+
+.custom-button {
+  background-color: royalblue;
+  cursor: pointer;
+}
+
+/* 마우스 호버 스타일 */
+.btn:hover,
+.link:hover,
+.custom-button:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 0 1px rgba(66, 153, 225, 0.3);
+}

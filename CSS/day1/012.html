@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        /* 변수명 지정 --로 시작 */
+        --main-color: blue;
+      }
+      /* 변수 사용 */
+      h1 {
+        /* color: blue; */
+        color: var(--main-color);
+      }
+      section {
+        /* color: blue; */
+        color: var(--main-color);
+      }
+      p {
+        /* color: blue; */
+        color: var(--main-color);
+      }
+    </style>
+    <title>root</title>
+  </head>
+  <body>
+    <h1>루트</h1>
+    <section>전 section</section>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </body>
+</html>

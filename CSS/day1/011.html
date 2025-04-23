@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>checked 가상 클래스</title>
+    <style>
+      /* 기본 스타일 */
+      .option-container {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      /* 체크박스가 체크되었을 때 라벨 스타일 변경 */
+      input[type="checkbox"]:checked + label {
+        color: royalblue;
+        font-weight: bold;
+      }
+
+      /* 라디오 버튼이 선택되었을 때 라벨 스타일 변경 */
+      input[type="radio"]:checked + label {
+        color: royalblue;
+        font-weight: bold;
+      }
+
+      /* 라벨 스타일 */
+      label {
+        margin-left: 5px;
+        cursor: pointer;
+      }
+
+      /* 각 항목 간격 */
+      .item {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="option-container">
+      <h3>체크박스 예제</h3>
+      <div class="item">
+        <input type="checkbox" id="apple" name="fruit" />
+        <label for="apple">사과</label>
+      </div>
+      <div class="item">
+        <input type="radio" id="banana" name="fruit" />
+        <label for="banana">바나나</label>
+      </div>
+    </div>
+  </body>
+</html>

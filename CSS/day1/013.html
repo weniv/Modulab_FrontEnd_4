@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>has</title>
+    <style>
+      label:has(input[required]) {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <label for="">
+        일반 항목
+        <input type="text">
+      </label>
+      <label for="">
+        필수 입력 항목
+        <input type="password" required>
+    </form>
+  </body>
+</html>

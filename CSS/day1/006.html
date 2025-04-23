@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      /* 1. 기본 선택 속성자 */
+      [title] {
+        background-color: bisque;
+      }
+      /* 2. 속성값 선택자 */
+      [title="link"] {
+        background-color: lightblue;
+      }
+      /* 3. 속성값 포함 선택자 */
+      [class~="btn"] {
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1. 마크업 최소화 -> class, id를 부여해주지 않아도 된다. -->
+    <!-- 2. 마크업을 수정할 수 없는 상황 -->
+    <p title="hello">Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <a href="#" title="link">Lorem, ipsum.</a>
+    <div class="btn primary">Primary Button</div>
+    <div class="btn secondary">Secondary Button</div>
+    <div class="button tertiary">Tertiary Button</div>
+  </body>
+</html>

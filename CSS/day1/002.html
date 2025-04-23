@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상속</title>
+    <style>
+      section {
+        color: red;
+        border: 5px solid pink;
+      }
+      button {
+        all: inherit;
+        /* 상속되지 않는 속성들 강제로 상속받게 하기 위해 사용 */
+      }
+      input {
+        all: inherit;
+        /* 상속되지 않는 속성들 강제로 상속받게 하기 위해 사용 */
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>자식 1</h1>
+      <h2>자식 2</h2>
+      <button>자식 3</button>
+      <input type="text" value="자식 4" />
+    </section>
+  </body>
+</html>

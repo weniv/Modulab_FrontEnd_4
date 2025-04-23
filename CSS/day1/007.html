@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상 클래스 선택자</title>
+    <style>
+      .container {
+        width: 100%;
+        border: 3px solid black;
+      }
+      /* 아직 방문하지 않은 링크 선택할 때 */
+      .sns a:link {
+        color: orange;
+        text-decoration: none;
+      }
+      /* 이미 방문한 링크를 선택할 때 */
+      .sns a:visited {
+        color: green;
+      }
+      .hover-btn {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        transition: background-color 0.3s;
+      }
+      .hover-btn:hover {
+        background-color: chocolate;
+      }
+      .hover-btn:active {
+        background-color: aqua;
+      }
+      .focus-input {
+        padding: 10px;
+        border: 2px solid #bdc3c7;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      .focus-input:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 동적 가상 클래스 선택자 : 사용자의 동작에 따라 변화하는 상태 -->
+    <div class="container">
+      <ul>
+        <li class="sns"><a href="https://weniv.co.kr/">위니브</a></li>
+        <li class="sns"><a href="https://daum.com/">다음</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <button class="hover-btn">마우스를 올려보세요</button>
+    </div>
+    <div class="container">
+      <input
+        type="text"
+        class="focus-input"
+        placeholder="클릭하거나 탭하세요"
+      />
+      <input
+        type="text"
+        class="focus-input"
+        placeholder="클릭하거나 탭하세요"
+      />
+      <input
+        type="text"
+        class="focus-input"
+        placeholder="클릭하거나 탭하세요"
+      />
+      <input
+        type="text"
+        class="focus-input"
+        placeholder="클릭하거나 탭하세요"
+      />
+      <input
+        type="text"
+        class="focus-input"
+        placeholder="클릭하거나 탭하세요"
+      />
+      <input
+        type="text"
+        class="focus-input"
+        placeholder="클릭하거나 탭하세요"
+      />
+    </div>
+  </body>
+</html>

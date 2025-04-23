@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가상요소</title>
+    <style>
+      p::before {
+        content: "오름캠프 수강생 여러분!";
+        color: red;
+        margin-right: 5px;
+      }
+      p::after {
+        content: "잘부탁드립니다";
+        color: blue;
+        margin-left: 5px;
+      }
+      input::placeholder {
+        color: green;
+      }
+      p::before {
+        content: "";
+      }
+    </style>
+  </head>
+  <body>
+    <p>안녕하세요!</p>
+    <input type="text" placeholder="메세지를 입력하세요" />
+
+    <p>1만시간의 법칙은~</p>
+  </body>
+</html>
