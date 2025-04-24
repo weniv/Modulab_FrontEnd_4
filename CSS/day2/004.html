@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      .underline {
+        /* 단축속성 */
+        text-decoration: underline red wavy 2px;
+        /* 하단에 있는 속성들을 합친 것 */
+        text-decoration-line: underline;
+        text-decoration-color: red;
+        text-decoration-style: wavy;
+        text-decoration-thickness: 2px;
+      }
+      p {
+        width: 300px;
+        border: solid 1px black;
+      }
+      /* text-align 인라인 요소에만 적용된다!  */
+      .left-align {
+        text-align: left;
+      }
+      .right-align {
+        text-align: right;
+      }
+      .center-align {
+        text-align: center;
+      }
+      .justify-align {
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="underline">밑줄이 그어진 텍스트</p>
+    <p class="left-align">
+      이 텍스트는 왼쪽 정렬입니다. 웹에서 가장 일반적인 정렬 방식입니다.
+    </p>
+    <p class="right-align">
+      이 텍스트는 오른쪽 정렬입니다. 주로 날짜나 숫자 등에 사용됩니다.
+    </p>
+    <p class="center-align">
+      이 텍스트는 중앙 정렬입니다. 제목이나 특별한 강조가 필요한 경우에
+      사용합니다.
+    </p>
+    <p class="justify-align">
+      이 텍스트는 양쪽 정렬입니다. 긴 문단에 사용될 수 있지만, 불규칙한 간격으로
+      인해 가독성이 떨어질 수 있습니다. 따라서 사용시 주의가 필요합니다.
+    </p>
+  </body>
+</html>

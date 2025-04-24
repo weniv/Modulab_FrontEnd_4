@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폰트 적용하기</title>
+    <!-- 1. link 태그 방식으로 웹 폰트 적용하기 -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&display=swap"
+      rel="stylesheet"
+    /> -->
+    <style>
+      /* 2. @import 방식으로 적용하기 */
+      /* @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&display=swap");
+      body {
+        font-family: "Dongle", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      } */
+      /* 3. @font-face 방식으로 적용하기 */
+      @font-face {
+        font-family: "Pretendard-Medium";
+        src: url("./font/Pretendard-Medium.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Pretendard-Bold";
+        src: url("./font/Pretendard-Bold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+      }
+      body {
+        font-family: "Pretendard-Medium", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+      h1 {
+        font-family: "Pretendard-Bold";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>위니브</h1>
+    <h2>프론트엔드 개발자</h2>
+    <p>폰트 예쁘다~</p>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>단위</title>
+    <style>
+      html {
+        font-size: 30px;
+      }
+      .pixel {
+        width: 100px;
+        background-color: gray;
+        /* 폰트 사이즈 지정 */
+        font-size: 20px;
+      }
+      .percent {
+        width: 50%;
+        height: 100px;
+        background-color: lightpink;
+        margin-right: auto;
+        text-align: center;
+      }
+      /* vh, vw */
+      /* vw = 브라우저 화면 너비의 1/100 */
+      /* vh = 브라우저 화면 높이의 1/100 */
+      /* 화면 너비에 비례해서 크기를 조정하는 용도로 씀 ex) 폰트 크기, 컨테이너의 너비 */
+      .viewport {
+        width: 80vw;
+        height: 10vh;
+        background-color: lightgreen;
+      }
+      /* vmax vmin은 브라우저 화면의 너비와 높이값 중 더 큰 값의 1/100 */
+      /* 모바일 : 세로가 길기 때문에 vw로 하면 글자가 너무 커질 수 있음 */
+      /* pc: 가로가 넓기 때문에 vh로 하면 글씨가 너무 작을 수 있음. */
+      .vmax {
+        font-size: 10vmax;
+      }
+      .vmin {
+        font-size: 10vmin;
+      }
+      .em-child {
+        background-color: bisque;
+        /* 부모 20px * 1.5 = 30px */
+        font-size: 1.5em;
+      }
+      .rem-child {
+        background-color: lightblue;
+        /* 루트요소 16px * 1.5 = 24px */
+        /* 사용자의 기본 글꼴 크기에 따라 전체 사이트가 비례적으로 확대,축소되길 원할 때 */
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="vmax">vmax</h1>
+    <h1 class="vmin">vmin</h1>
+    <div class="pixel">
+      <section class="percent">부모의 50% 너비</section>
+      <section class="em-child">em</section>
+      <section class="rem-child">rem</section>
+    </div>
+    <section class="viewport">뷰포트 10% 너비, 10% 높이</section>
+  </body>
+</html>

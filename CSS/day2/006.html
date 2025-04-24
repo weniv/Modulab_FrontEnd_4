@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상속</title>
+    <style>
+      section {
+        /* 상속o */
+        color: red;
+        font-weight: 100;
+        /* 상속x */
+        padding: 20px;
+        border: 5px solid pink;
+      }
+
+      div {
+        border: 5px solid skyblue;
+        /* color: blue; */
+        /* font-weight: 900; */
+        /* inherit 부모와 동일하게 상속 */
+        /* => 나 그냥 상속을 다 받을게!  */
+        /* color: inherit; */
+        /* 상속x 속성인 border가 상속이 된다. */
+        /* border: inherit; */
+        /* initial 부모로부터 상속받은 값이나 부모에 직접 지정한 값 무시. 해당 속성의 초기값으로 지정 */
+        color: initial;
+        font-weight: initial;
+        /* unset */
+        /* 자연적으로 상속되는 속성 (text관련)  => 나 그냥 상속 다 받을게! */
+        font-weight: unset;
+        /* 자연적으로 상속 안되는 속성 -> 해당 속성의 초기값으로 지정 */
+        border: unset;
+        /* revert -> 나 그냥 상속을 다 받을게!*/
+        color: revert;
+        /* border는 상속되지 않는 속성 */
+        border: revert;
+        /* 모든 속성에 대해 한꺼번에 상속  */
+        all: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      부모
+      <div>자식 1</div>
+      <div>자식 2</div>
+    </section>
+  </body>
+</html>
