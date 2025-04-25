@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #333;
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+      }
+
+      .box {
+        background-image: url("https://picsum.photos/50");
+      }
+
+      .repeat {
+        /* 배경이미지가 영역보다 작다면, 전체를 덮을때까지 이미지가 필요한 만큼 반복*/
+        background-repeat: repeat;
+      }
+
+      .repeat-x {
+        background-repeat: repeat-x;
+      }
+
+      .repeat-y {
+        background-repeat: repeat-y;
+      }
+
+      .no-repeat {
+        background-repeat: no-repeat;
+      }
+
+      .space {
+        background-repeat: space;
+      }
+
+      .round {
+        background-repeat: round;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- img와 Background -->
+    <!-- 1. Img : 꼭 이미지가 불러와져야 하고, 대체 텍스트가 있어야 할 때,로딩 조절,picture 사용해서 다르게 로딩 조정 가능 -->
+    <!-- 2. Background: 이미지가 단순 장식용 이미지, UI 요소의 일부일때 -->
+    <div class="container">
+      <div class="box repeat">repeat</div>
+      <div class="box repeat-x">repeat-x</div>
+      <div class="box repeat-y">repeat-y</div>
+      <div class="box no-repeat">no-repeat</div>
+      <div class="box space">space</div>
+      <div class="box round">round</div>
+    </div>
+  </body>
+</html>

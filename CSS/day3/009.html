@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지 비율 유지</title>
+    <style>
+      .box {
+        width: 300px;
+        background-color: pink;
+        /* 높이 지정해주지 않아도 가로와 세로 비율 유지되는 박스 생성 */
+        /* aspect-ratio: 2/1; */
+      }
+      img {
+        width: 300px;
+        aspect-ratio: 1/1;
+        /* 이미지의 비율을 유지하면서 가득 채울 수 있다. 이미지의 일부가 잘림 */
+        object-fit: cover;
+        /* 이미지가 비율을 유지하면서 컨테이너 내에 완전히 표시된다. 여백 발생할 수 있다. */
+        object-fit: contain;
+        object-fit: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="box"></div> -->
+    <img src="./weniv-licat.png" alt="위니브 빙키" />
+  </body>
+</html>

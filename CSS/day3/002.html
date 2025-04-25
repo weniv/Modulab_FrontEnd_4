@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>width</title>
+    <style>
+      .wrapper {
+        /* width: 100px; */
+        background-color: bisque;
+      }
+      .width-example {
+        background-color: #3498db;
+        color: white;
+        margin-bottom: 10px;
+        padding: 10px;
+      }
+      .auto {
+        width: auto;
+      }
+      .min-content {
+        width: min-content;
+        /* word-break: break-all; */
+      }
+      /* 줄바꿈이 안되는 한에서 가장 작은 너비 */
+      .max-content {
+        width: max-content;
+      }
+      /* 가능하다면 max-content 처럼 콘텐츠에 맞게 확장되지만, 부모요소의 너비를 고려해서 필요시 줄바꿈을 한다.  */
+      .fit-content {
+        width: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="width-example auto">auto</div>
+      <div class="width-example min-content">min-content</div>
+      <div class="width-example min-content">한글콘텐츠</div>
+      <div class="width-example max-content">max-content with long content</div>
+      <div class="width-example fit-content">
+        fit-contentfit-contentfit-contentfit-content
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>position</title>
+    <style>
+      body {
+        /* position:fixed를 위해 스크롤 가능하게 만듦 */
+        height: 2000px;
+      }
+      /* position은 자식 요소들에게 상속되지 않는다. */
+      .container {
+        /* 해당 요소 기준으로 pink의 위치를 잡게 하고 싶다면? */
+        /* position: relative; */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
+      }
+      .box {
+        background-color: #ccc;
+        width: 200px;
+        height: 200px;
+      }
+      .pink {
+        /* 요소를 상대적으로 배치 */
+        /* position: relative; */
+        /* 가장 가까운 조상 중 position:static 아닌 요소 기준으로 절대적인 위치 */
+        /* position: absolute; */
+        /* 뷰포트 기준으로 고정. 문서 흐름에서 제거 */
+        /* position: fixed; */
+        background-color: pink;
+        /* 특정 임계점을 지정해주면 그 위치부터 fixed 처럼 동작, 스크롤되는 부모 요소의 범위 내에서 작동 */
+        position: sticky;
+        top: 0px;
+        left: 10px;
+      }
+      .baby {
+        background-color: teal;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box pink">
+        <div class="baby">5</div>
+      </div>
+      <div class="box">6</div>
+      <div class="box">7</div>
+      <div class="box">8</div>
+      <div class="box">9</div>
+    </div>
+  </body>
+</html>

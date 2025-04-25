@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #333;
+        padding: 10px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        background-image: url("https://picsum.photos/200/300");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .auto {
+        background-size: auto;
+      }
+      /* 요소의 비율을 유지하면서 덮음. 잘릴 수 있다. */
+      .cover {
+        background-size: cover;
+      }
+      /* 요소의 비율을 유지하면서 이미지를 최대한 크게 설정. 이미지가 잘리거나 찌그러지지 않지만 여백이 발생할 수 있다. */
+      .contain {
+        background-size: contain;
+      }
+
+      .percent {
+        background-size: 50%;
+      }
+
+      .pixels {
+        background-size: 100px 80px;
+      }
+
+      .mixed {
+        background-size: 80% 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box auto">auto</div>
+      <div class="box cover">cover</div>
+      <div class="box contain">contain</div>
+      <div class="box percent">50%</div>
+      <div class="box pixels">100px 80px</div>
+      <div class="box mixed">80% 60px</div>
+    </div>
+  </body>
+</html>

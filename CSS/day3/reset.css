@@ -1,0 +1,116 @@
+@import "@/styles/var.scss";
+@import "@/styles/function.scss";
+@import "@/styles/theme.scss";
+
+/* reset ------------------------------------------------------- */
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+ul,
+ol,
+li {
+  padding: 0;
+  margin: 0;
+}
+button,
+input {
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+}
+button {
+  background: none;
+  padding: 0;
+  border: 0;
+  vertical-align: middle;
+}
+button:enabled {
+  cursor: pointer;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+img,
+svg {
+  vertical-align: top;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+address {
+  font: inherit;
+}
+
+/* 폰트 ------------------------------------------------------- */
+
+/* 폰트*/
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: var(--pretendard);
+  min-width: 320px;
+  font-size: fcSize(14, 16);
+  color: var(--surface);
+  background-color: var(--background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.serif {
+  font-family: var(--myeongjo), serif;
+}
+
+/* 색상 ------------------------------------------------------- */
+
+/* 공통 ------------------------------------------------------- */
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.dim {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  animation: fadeIn 0.2s;
+}
+
+/* 미디어 쿼리 ------------------------------------------------------- */
