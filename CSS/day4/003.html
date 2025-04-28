@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            img {
+                /* 텍스트나 다른 인라인 요소들이 그 주의를 감싸도록 만드는 기술 */
+                /* 요소를 왼쪽으로 띄움 */
+                float: left;
+            }
+            h2 {
+                /* 요소를 오른쪽으로 띄움 */
+                float: right;
+            }
+
+            .container {
+                border: solid 5px salmon;
+                /* 모든 자식요소가 float 속성을 가질 때 부모 요소는 자식 요소의 높이를 인식하지 못함 */
+
+                /* 해결방법 1 */
+                /* 유연성이 떨어지기 때문에 권장하지 않음 */
+                /* height: 1000px; */
+
+                /* 해결방법 2 */
+                /* 예기치 않은 문제가 발생할 수 있기 때문에 권장하지 않음 */
+                /* overflow: hidden; */
+            }
+
+            /* 해결방법 3. 가장 흔히 사용되는 방법 */
+            .clearfix::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            p {
+                float: right;
+            }
+
+            .container2 {
+                border: solid 5px lightblue;
+            }
+
+            .container2 img {
+                float: left;
+            }
+
+            .container2 h2 {
+                float: right;
+            }
+
+            .container2 p {
+                float: none;
+                clear: left;
+                clear: right;
+                /* float 해제 방법 */
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container clearfix">
+            <h2>hello</h2>
+            <img src="../day3/img/weniv-binky.png" alt="" />
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aut explicabo est voluptatem porro fugit voluptate! Voluptatum tempore voluptatibus totam nihil, nam ex, porro dicta
+                placeat tempora laudantium vitae. Ipsam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo? At debitis magnam hic ea. Alias nobis id nesciunt similique,
+                suscipit eveniet nihil, nostrum corrupti voluptates magni quia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aut explicabo est voluptatem porro fugit voluptate!
+                Voluptatum tempore voluptatibus totam nihil, nam ex, porro dicta placeat tempora laudantium vitae. Ipsam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo?
+                At debitis magnam hic ea. Alias nobis id nesciunt similique, suscipit eveniet nihil, nostrum corrupti voluptates magni quia nulla. Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Quo aut explicabo est voluptatem porro fugit voluptate! Voluptatum tempore voluptatibus totam nihil, nam ex, porro dicta placeat tempora laudantium vitae. Ipsam. Lorem ipsum
+                dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo? At debitis magnam hic ea. Alias nobis id nesciunt similique, suscipit eveniet nihil, nostrum corrupti voluptates
+                magni quia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aut explicabo est voluptatem porro fugit voluptate! Voluptatum tempore voluptatibus totam nihil, nam ex,
+                porro dicta placeat tempora laudantium vitae. Ipsam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo? At debitis magnam hic ea. Alias nobis id nesciunt
+                similique, suscipit eveniet nihil, nostrum corrupti voluptates magni quia nulla.
+            </p>
+            <img src="../day3/img/weniv-binky.png" alt="" />
+        </div>
+
+        <div class="container2">
+            <h2>hello</h2>
+            <img src="../day3/img/weniv-binky.png" alt="" />
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aut explicabo est voluptatem porro fugit voluptate! Voluptatum tempore voluptatibus totam nihil, nam ex, porro dicta
+                placeat tempora laudantium vitae. Ipsam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo? At debitis magnam hic ea. Alias nobis id nesciunt similique,
+                suscipit eveniet nihil, nostrum corrupti voluptates magni quia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aut explicabo est voluptatem porro fugit voluptate!
+                Voluptatum tempore voluptatibus totam nihil, nam ex, porro dicta placeat tempora laudantium vitae. Ipsam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo?
+                At debitis magnam hic ea. Alias nobis id nesciunt similique, suscipit eveniet nihil, nostrum corrupti voluptates magni quia nulla. Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Quo aut explicabo est voluptatem porro fugit voluptate! Voluptatum tempore voluptatibus totam nihil, nam ex, porro dicta placeat tempora laudantium vitae. Ipsam. Lorem ipsum
+                dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo? At debitis magnam hic ea. Alias nobis id nesciunt similique, suscipit eveniet nihil, nostrum corrupti voluptates
+                magni quia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo aut explicabo est voluptatem porro fugit voluptate! Voluptatum tempore voluptatibus totam nihil, nam ex,
+                porro dicta placeat tempora laudantium vitae. Ipsam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae, expedita nemo? At debitis magnam hic ea. Alias nobis id nesciunt
+                similique, suscipit eveniet nihil, nostrum corrupti voluptates magni quia nulla.
+            </p>
+        </div>
+    </body>
+</html>

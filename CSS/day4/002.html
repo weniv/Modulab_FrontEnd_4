@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                position: relative;
+            }
+
+            .parent {
+                margin-bottom: 20px;
+            }
+
+            .parent > div {
+                width: 100px;
+                height: 100px;
+                font-size: 36px;
+                font-weight: 900;
+            }
+
+            .box1 {
+                background-color: lightcoral;
+            }
+            .box2 {
+                background-color: lightblue;
+            }
+            .box3 {
+                background-color: lightgreen;
+            }
+
+            .parent2 .box1 {
+                /* 유지보수의 가능성을 위해서 10, 100 단위로 많이 사용 */
+                /* 값이 높을수록 z축 선상에서 위에 쌓임 */
+                z-index: 300;
+            }
+
+            .parent2 .box2 {
+                bottom: 50px;
+                z-index: 200;
+            }
+
+            .parent2 .box3 {
+                bottom: 100px;
+                z-index: 100;
+            }
+
+            .parent3 {
+                background-color: rgba(0, 0, 0, 0.5);
+                /* 부모 요소의 z-index 값을 높여도 자식 위로 나갈 수 없음 */
+                /* z-index: 100; */
+            }
+
+            .parent3 .box1 {
+                z-index: -1;
+            }
+
+            .parent3 .box2 {
+                z-index: -2;
+            }
+
+            .parent3 .box3 {
+                z-index: -3;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 기본값 auto. 기존의 쌓임 맥락을 유지. 작성된 html 순서에 따라 쌓임 -->
+        <div class="parent">
+            <div class="box1">box 1</div>
+            <div class="box2">box 2</div>
+            <div class="box3">box 3</div>
+        </div>
+
+        <!-- position 속성을 사용해서 새로운 쌓임 맥락 생성. z-index 속성으로 쌓임 순서 조정 -->
+        <div class="parent parent2">
+            <div class="box1">box 1</div>
+            <div class="box2">box 2</div>
+            <div class="box3">box 3</div>
+        </div>
+
+        <!-- 자식 요소의 z-index를 낮춰 부모요소 밑으로 갈 수 있음. 부모요소는 z-index를 높여도 자식 요소 위로 나갈 수 없음 -->
+        <div class="parent parent3">
+            <div class="box1">box 1</div>
+            <div class="box2">box 2</div>
+            <div class="box3">box 3</div>
+        </div>
+    </body>
+</html>

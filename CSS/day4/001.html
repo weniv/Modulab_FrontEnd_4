@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 1000px;
+                height: 1000px;
+                border: dotted 30px black;
+                padding: 50px;
+                background-image: url(https://i.namu.wiki/i/8BAuDmjlFbHoGpGTyTUJyeIsrWw7vrGKTvbOBS1DbaLNHHFL6D05TSZEyVGGffn_RIs6zrf4jCb5Xq5Lnbs8QQ.webp);
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                background-color: tomato;
+                /* 기본값. 배경이 border영역까지 배경이 차지 */
+                /* background-clip: border-box; */
+                /* 배경이 padding 영역까지 차지 */
+                /* background-clip: padding-box; */
+                /* 배경이 content 영역까지 차지 */
+                /* background-clip: content-box; */
+                /* 배경이 텍스트 위에만 */
+                background-clip: text;
+
+                /* 기본값. 이미지의 시작점이 padding영역의 좌측 상단 */
+                background-origin: padding-box;
+                /* 이미지의 시작점이 border영역의 좌측 상단 */
+                background-origin: border-box;
+                /* 이미지의 시작점이 content영역의 좌측 상단 */
+                background-origin: content-box;
+
+                /* 아래 속성이 설정된 경우에는 background-origin 속성이 무시 됨 */
+                background-attachment: fixed;
+                font-size: 100px;
+                font-weight: 900;
+                color: transparent;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, quod officiis pariatur atque nisi id itaque repellendus veritatis placeat! Nostrum magni temporibus rerum reprehenderit
+            repellendus nam dignissimos vero rem illo!
+        </div>
+    </body>
+</html>
