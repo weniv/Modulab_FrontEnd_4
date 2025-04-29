@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                background-color: #eee;
+                height: 100vh;
+
+                display: grid;
+
+                /* 열방향 그리드 트랙 사이즈 설정 */
+                /* grid-template-columns: 100px 200px 300px;
+                grid-template-columns: 10% 30% 60%;
+                grid-template-columns: 1fr 2fr 3fr; */
+
+                /* 행방향 그리드 트랙 사이즈 설정 */
+                /* fraction(분수)의 약자. 컨테이너 분할 비율 설정 */
+                /* grid-template-rows: 1fr 2fr 3fr; */
+
+                /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+                /* 반복할 횟수, 반복할 값 */
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-columns: repeat(3, 1fr 2fr);
+
+                /* 절대 단위 + fr 단위 사용해서 고정된 트랙과 컨테이너의 크기에 따라 유동적인 트랙 UI */
+                grid-template-columns: 100px 1fr;
+
+                /* 최소값, 최대값 */
+                /* 설정한 최소값, 최대값 사이의 범위를 지정 */
+                grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr);
+                grid-template-columns: repeat(3, minmax(100px, 1fr));
+
+                gap: 20px;
+                /* 행간, 열간 */
+                gap: 10px 30px;
+            }
+
+            .item {
+                background-color: lightcoral;
+                border: solid 1px black;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+        </div>
+    </body>
+</html>

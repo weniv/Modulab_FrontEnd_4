@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                width: 600px;
+                height: 600px;
+                background-color: black;
+                gap: 10px;
+                display: grid;
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container div {
+                width: 50px;
+                height: 50px;
+            }
+
+            .item1 {
+                background-color: limegreen;
+                /* 개별 아이템의 수직, 수평 방향 정렬 */
+                align-self: center;
+                justify-self: center;
+                /* 시각적인 순서 변경 */
+                order: 3;
+            }
+
+            .item2 {
+                background-color: lightcoral;
+                order: 2;
+            }
+
+            .item3 {
+                background-color: royalblue;
+                order: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item1">item1</div>
+            <div class="item2">item2</div>
+            <div class="item3">item3</div>
+        </div>
+    </body>
+</html>

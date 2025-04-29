@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                background-color: #eee;
+                height: 100vh;
+
+                display: grid;
+                grid-template-columns: repeat(3, 100px);
+                grid-template-rows: repeat(3, 100px);
+
+                /* 트랙단위 수평, 수직 정렬 */
+                /* 수평방향 */
+                justify-content: center;
+                /* 수직방향 */
+                align-content: center;
+
+                /* 셀 내 아이템 수평, 수직 정렬 */
+                /* 수평방향 */
+                justify-items: center;
+                /* 수직방향 */
+                align-items: center;
+            }
+
+            .item {
+                background-color: lightcoral;
+                border: solid 1px black;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                width: 50px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+        </div>
+    </body>
+</html>

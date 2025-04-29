@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                display: grid;
+                padding: 20px;
+            }
+            .auto-fill {
+                background-color: aqua;
+                /* 가능한 많은 컬럼을 만들어내고, 컨테이너에 빈 공간이 남을 가능성 */
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .auto-fill .item {
+                border: solid 10px aqua;
+            }
+
+            .auto-fit {
+                background-color: mediumorchid;
+                /* 가능한 많은 컬럼을 만들어내고, 컨테이너에 빈 공간이 생길 경우 각 셀들이 나누어 가짐 */
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .auto-fit .item {
+                border: solid 10px mediumorchid;
+            }
+
+            .item {
+                background-color: black;
+                color: #fff;
+                font-size: 32px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container auto-fill">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+        </div>
+        <div class="container auto-fit">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+        </div>
+    </body>
+</html>
