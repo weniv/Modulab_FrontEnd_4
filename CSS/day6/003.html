@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                padding: 50px;
+            }
+
+            .container div {
+                width: 100px;
+                height: 100px;
+                background-color: lightcoral;
+            }
+
+            .container div:hover {
+                background-color: magenta;
+                transform: scale(2);
+                font-size: 2em;
+                transition-duration: 2s;
+            }
+
+            .item2 {
+                transition-property: all;
+            }
+
+            .item3 {
+                transition-property: background-color;
+            }
+
+            .item4 {
+                transition-timing-function: ease;
+            }
+
+            .item5 {
+                transition-timing-function: cubic-bezier(0.12, -0.37, 0.95, 1.44);
+            }
+
+            .item6 {
+                transition-timing-function: steps(5);
+            }
+
+            .item7 {
+                transition-delay: 3s;
+                transition-delay: -3s;
+                transition-delay: -1s;
+            }
+
+            .item8 {
+                transition: all 1s;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item1">normal</div>
+            <div class="item2">property</div>
+            <div class="item3">property background-color</div>
+            <div class="item4">transition-timing-function</div>
+            <div class="item5">cubic-bezier</div>
+            <div class="item6">steps</div>
+            <div class="item7">transition-delay</div>
+            <div class="item8">transition</div>
+            <div class="item9"></div>
+            <div class="item10"></div>
+        </div>
+    </body>
+</html>
