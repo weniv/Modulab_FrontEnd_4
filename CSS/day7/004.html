@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                list-style: none;
+                float: left;
+                background-color: lightcoral;
+                /* 각 3개의 li가 동일한 너비, li 사이의 여백은 50px */
+                /* css의 속성값을 계산. 연산자 좌우에 공백 유지 */
+                width: calc((100% - 50px * 2) / 3);
+                /* 최소값, 선호값, 최대값으로 범위를 지정 */
+                font-size: clamp(1rem, 5vw, 3rem);
+            }
+
+            li:not(:last-child) {
+                margin-right: 50px;
+            }
+
+            div {
+                height: 200px;
+                background-color: lightsalmon;
+                margin: auto;
+                /* 여러 값중 최소값, 최대값을 선택 */
+                width: min(600px, 90%);
+                width: max(600px, 90%);
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>1. 일어나기</li>
+            <li>2. 이불 정리하기</li>
+            <li>3. 고양이 모래 치우기</li>
+        </ul>
+        <div></div>
+    </body>
+</html>

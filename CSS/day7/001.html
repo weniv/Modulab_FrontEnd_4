@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .container {
+                perspective: 1000px;
+            }
+
+            .item {
+                width: 200px;
+                height: 200px;
+                background-color: lawngreen;
+                transform: rotateY(45deg);
+
+                /* 자식요소 또한 3D 공간에 배치할 것인지 */
+                transform-style: preserve-3d;
+            }
+
+            .item::after {
+                content: "";
+                position: absolute;
+                width: 50%;
+                height: 50%;
+                background-color: lightcoral;
+
+                transform: translateZ(200px);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item"></div>
+        </div>
+    </body>
+</html>
