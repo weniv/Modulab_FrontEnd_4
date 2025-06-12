@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 변수 선언 예제</title>
+    <style>
+        /* CSS 변수 선언 - :root에서 전역 변수로 선언 */
+        :root {
+            --main-color: #3498db;     /* 메인 색상 */
+            --text-size: 18px;         /* 텍스트 크기 */
+            --padding-size: 20px;      /* 패딩 크기 */
+        }
+
+        /* 선언한 변수 사용하기 - var() 함수 사용 */
+        .container {
+            background-color: var(--main-color);
+            color: white;
+            font-size: var(--text-size);
+            padding: var(--padding-size);
+            text-align: center;
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        .button {
+            background-color: white;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            padding: 10px var(--padding-size);
+            font-size: var(--text-size);
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: var(--main-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CSS 변수 사용 예제</h2>
+        <p>이 페이지는 CSS 변수를 사용하여 만들어졌습니다.</p>
+        <p>메인 색상, 텍스트 크기, 패딩이 모두 변수로 관리됩니다.</p>
+        <button class="button">버튼 예제</button>
+    </div>
+</body>
+</html>

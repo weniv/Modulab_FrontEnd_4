@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <!-- 적용 순서에 상관 없이 tailwind 안에 내장된 color 순서에 따라 color가 결정 -->
+    <!-- js로 color 같은 것을 동적으로 컨트롤할 때 고려해야 할 사항이 더 생깁니다. -->
+    <div class="w-64 h-64 bg-blue-500 bg-red-500 bg-green-500"></div>
+    <div class="w-64 h-64 bg-red-500 bg-blue-500 bg-green-500"></div>
+    <div class="w-64 h-64 bg-green-500 bg-red-500 bg-blue-500"></div>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude가 짜준 코드드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .course-card {
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 
+        프롬프트
+        
+        지금 우리 회사는 tailwind로 바닐라 자바스크립트 환경으로 아래 페이지를 만들어야 하는데, 이 페이지를 참고해서 페이지를 만들어줘. 추가로 지금 배너에 있는 이미지는 반은 텍스트고, 반은 이미지야. 배경 이미지가 있는 상태에서 텍스트가 떠있어.
+    -->
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-blue-600">wenibooks</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <input type="text" placeholder="검색어를 입력하세요" class="px-3 py-2 border border-gray-300 rounded-md text-sm">
+                    <button class="p-2">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="p-2">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="p-2">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Text Content -->
+                <div class="space-y-6">
+                    <div class="text-sm opacity-90">
+                        체계적 구현 중심의 생생한 성장기록
+                    </div>
+                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight">
+                        제주코딩베이스캠프와 함께<br>
+                        함께하는 IT 교육의 모든것
+                    </h2>
+                    <p class="text-lg opacity-90">
+                        유튜브와 책임 제주코딩베이스캠프를 통해 구독자님과 함께 성장해왔어!
+                    </p>
+                    <button class="bg-white text-green-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+                        지금 내관가기
+                    </button>
+                </div>
+                
+                <!-- Right Side - Illustration -->
+                <div class="relative">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-blur-sm">
+                        <div class="space-y-4">
+                            <!-- YouTube Badge -->
+                            <div class="flex items-center space-x-2 bg-red-600 text-white px-3 py-1 rounded-full text-sm w-fit">
+                                <span>📺</span>
+                                <span>@jejucodingcamp</span>
+                            </div>
+                            
+                            <!-- Main Content Block -->
+                            <div class="bg-blue-600 text-white p-6 rounded-lg">
+                                <div class="text-2xl font-bold mb-2">제주코딩베이스캠프</div>
+                                <div class="opacity-90">IT 교육 플랫폼</div>
+                            </div>
+                            
+                            <!-- Floating Elements -->
+                            <div class="flex justify-between items-center">
+                                <div class="bg-yellow-400 text-yellow-900 px-3 py-2 rounded text-sm font-semibold">
+                                    HTML
+                                </div>
+                                <div class="bg-green-400 text-green-900 px-3 py-2 rounded text-sm font-semibold">
+                                    CSS
+                                </div>
+                                <div class="bg-blue-400 text-blue-900 px-3 py-2 rounded text-sm font-semibold">
+                                    JS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-10 right-10 w-20 h-20 bg-white bg-opacity-10 rounded-full"></div>
+        <div class="absolute bottom-10 left-10 w-16 h-16 bg-white bg-opacity-10 rounded-full"></div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative">
+                <input 
+                    type="text" 
+                    placeholder="어떤 책을 찾으시나요?" 
+                    class="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-full search-input focus:border-blue-500 transition-colors"
+                >
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tags -->
+    <section class="py-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium">전체</button>
+                <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors">웹고급 시리즈</button>
+                <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors">베이스캠프 시리즈</button>
+                <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors">해석쉬 시리즈</button>
+                <button class="bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-300 transition-colors">기타</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Cards -->
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Python Course -->
+                <div class="course-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="flex h-64">
+                        <div class="w-1/2 bg-gradient-to-br from-blue-600 to-blue-800 p-6 flex flex-col justify-center items-center text-white">
+                            <div class="text-sm opacity-90 mb-2">웹고급</div>
+                            <div class="text-xl font-bold mb-2">PYTHON</div>
+                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.26-.02.21-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09-.33.22z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-1/2 p-6">
+                            <div class="text-sm text-gray-500 mb-2">주식회사 위니브 | 출판사: 시온출판</div>
+                            <h3 class="text-xl font-bold mb-3">경고장 파이썬</h3>
+                            <div class="text-sm text-gray-600 mb-4">
+                                진짜 성장, 현직자 3명, 개인 페이지, 네이버 웹툰, 업무 자동화를 더한 한 권이 당신이 찾던 그 책으로...
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-blue-600">진짜 성장</div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    Web-book
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python Base Camp Course -->
+                <div class="course-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="flex h-64">
+                        <div class="w-1/2 bg-gradient-to-br from-yellow-500 to-orange-600 p-6 flex flex-col justify-center items-center text-white">
+                            <div class="text-sm opacity-90 mb-2">Python</div>
+                            <div class="text-xl font-bold mb-2">베이스캠프</div>
+                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="w-1/2 p-6">
+                            <div class="text-sm text-gray-500 mb-2">주식회사 위니브 | 출판사: 시온출판</div>
+                            <h3 class="text-xl font-bold mb-3">파이썬 베이스캠프</h3>
+                            <div class="text-sm text-gray-600 mb-4">
+                                파이썬을 배포 체험까지 가능 기본 소양을 제대로 익힐 수 있는 베이스캠프 시리즈를 만나보세요.
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-blue-600">온라인의 경영</div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    Web-book
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JavaScript Course -->
+                <div class="course-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="flex h-64">
+                        <div class="w-1/2 bg-gradient-to-br from-yellow-400 to-yellow-600 p-6 flex flex-col justify-center items-center text-black">
+                            <div class="text-sm opacity-80 mb-2">JavaScript</div>
+                            <div class="text-xl font-bold mb-2">베이스캠프</div>
+                            <div class="w-16 h-16 bg-black bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl font-bold text-black">JS</span>
+                            </div>
+                        </div>
+                        <div class="w-1/2 p-6">
+                            <div class="text-sm text-gray-500 mb-2">주식회사 위니브 | 출판사: 시온출판</div>
+                            <h3 class="text-xl font-bold mb-3">JavaScript 베이스캠프</h3>
+                            <div class="text-sm text-gray-600 mb-4">
+                                웹 개발에서 필수인 다양한 변수에서 측정을 발견한 않이 이 JavaScript, 가능 기능에 최신 애플리케이션 학습이 가능한...
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-blue-600">온라인 강의</div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    Web-book
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HTML/CSS Course -->
+                <div class="course-card bg-white rounded-xl overflow-hidden shadow-lg">
+                    <div class="flex h-64">
+                        <div class="w-1/2 bg-gradient-to-br from-orange-500 to-red-600 p-6 flex flex-col justify-center items-center text-white">
+                            <div class="text-sm opacity-90 mb-2">HTML/CSS</div>
+                            <div class="text-xl font-bold mb-2">베이스캠프</div>
+                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <div class="text-sm font-bold">
+                                    <div>HTML</div>
+                                    <div>CSS</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-1/2 p-6">
+                            <div class="text-sm text-gray-500 mb-2">주식회사 위니브 | 출판사: 시온출판</div>
+                            <h3 class="text-xl font-bold mb-3">HTML/CSS 베이스캠프</h3>
+                            <div class="text-sm text-gray-600 mb-4">
+                                웹 페이지의 구조를 설명하는 HTML과 웹 페이지의 스타일을 정의하는 CSS를 더하면 완전한 요구에 이 모든...
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="text-sm text-blue-600">온라인 강의</div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    Web-book
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInputs = document.querySelectorAll('input[type="text"]');
+            const categoryButtons = document.querySelectorAll('section:nth-of-type(4) button');
+            const courseCards = document.querySelectorAll('.course-card');
+
+            // Search functionality
+            searchInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    filterCourses(searchTerm);
+                });
+            });
+
+            // Category filter functionality
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => {
+                        btn.classList.remove('bg-blue-600', 'text-white');
+                        btn.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.remove('bg-gray-200', 'text-gray-700');
+                    this.classList.add('bg-blue-600', 'text-white');
+                    
+                    const category = this.textContent.trim();
+                    filterByCategory(category);
+                });
+            });
+
+            function filterCourses(searchTerm) {
+                courseCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('.text-gray-600').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            function filterByCategory(category) {
+                if (category === '전체') {
+                    courseCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    return;
+                }
+
+                courseCards.forEach(card => {
+                    const courseType = card.querySelector('.text-gray-500').textContent;
+                    let shouldShow = false;
+
+                    switch(category) {
+                        case '웹고급 시리즈':
+                            shouldShow = courseType.includes('웹고급');
+                            break;
+                        case '베이스캠프 시리즈':
+                            shouldShow = card.querySelector('h3').textContent.includes('베이스캠프');
+                            break;
+                        case '해석쉬 시리즈':
+                            shouldShow = courseType.includes('해석쉬');
+                            break;
+                        case '기타':
+                            shouldShow = !courseType.includes('웹고급') && 
+                                        !card.querySelector('h3').textContent.includes('베이스캠프') &&
+                                        !courseType.includes('해석쉬');
+                            break;
+                    }
+
+                    card.style.display = shouldShow ? 'block' : 'none';
+                });
+            }
+
+            // Smooth scrolling for hero button
+            document.querySelector('.hero-gradient button').addEventListener('click', function() {
+                document.querySelector('section:nth-of-type(3)').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
