@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <!-- top, left, width, height에 커스텀 값을 사용했습니다. -->
+    <!-- 커스텀 값은 대괄호로 감싸서 사용합니다. -->
+    <!-- 예: w-[20px], h-[20px], top-[20px], left-[20px] -->
+    <!-- 이 값들은 Tailwind CSS의 기본 단위가 아닌 사용자 정의 값입니다. -->
+    <div class="space-y-4">
+        <div class="w-[80px] h-[40px] bg-red-400 rounded">hello</div>
+        <div class="top-[20px] left-[20px] w-[80px] h-[40px] bg-red-400 rounded">hello</div>
+        <div class="w-[80px] h-[40px] p-[10px] m-[5px] bg-red-400 rounded">hello</div>
+        <!-- padding-top: pt-[10px] -->
+        <!-- padding-bottom: pb-[10px] -->
+        <!-- padding-left: pl-[10px] -->
+        <!-- padding-right: pr-[10px] -->
+        <!-- margin-top: mt-[5px] -->
+        <!-- margin-bottom: mb-[5px] -->
+        <div class="w-[80px] h-[40px] pt-[10px] ml-[5px] bg-red-400 rounded">hello</div>
+        <div class="w-[80px] h-[40px] bg-[#FF0000] rounded">hello</div>
+        <div class="w-[80px] h-[40px] bg-red-400 text-[32px] rounded">hello</div>
+        <div class="w-[800px] h-[400px] bg-[url(./img.png)]">hello</div>
+    </div>
+    <!-- 나는 아래 flex로 이미지 4개를 배치할 예정이야. 코드를 작성해줘. 이미지 경로는 ./img.png 야 -->
+    <!-- Ctrl + .을 누르고 요청해보세요. -->
+
+</body>
+</html>
