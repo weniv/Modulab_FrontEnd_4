@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>사진 인화 시뮬레이션</title>
+  <style>
+    #preview {
+      display: none;
+      width: 150px;
+    }
+
+    #photo-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #photo-list img {
+      width: 150px;
+    }
+
+    /* .delete-btn {
+      pointer-events: none;
+    } */
+  </style>
+</head>
+<body>
+  <h2>📸 사진 인화 서비스</h2>
+  <p>사진을 선택하세요:</p>
+  <input type="file" id="file-input" accept="image/*" />
+  <br><br>
+  <img id="preview">
+  <br>
+  <button id="order-btn">📦 주문하기</button>
+  <br>
+  <ul id="log"></ul>
+  <div id="photo-list"></div>
+
+  <script>
+    // 1. 이미지 업로드
+    // 2. 액자 선택
+    // 3. 배송 요청
+
+    const fileInput = document.getElementById('file-input');
+    const orderBtn = document.getElementById('order-btn');
+    const log = document.getElementById('log');
+    const preview = document.getElementById('preview');
+    const photoList = document.getElementById('photo-list');
+    const BASE_URL = 'https://web-production-6707e.up.railway.app';
+
+    let selectedFile = null; // 첨부한 현재 파일
+
+    loadPhotoList();
+
+    orderBtn.addEventListener('click', async () => {
+      if (!selectedFile) {
+        addLog('인쇄할 이미지를 선택하세요.');
+        return;
+      }
+
+      addLog('주문 프로세스 시작');
+      
+      try {
+        const photoId = await uploadPhoto(selectedFile);
+        const orderId = await chooseFrame(photoId);
+        const message = await requestDelivery(orderId);
+        addLog(message);
+        loadPhotoList();
+      } catch (error) {
+        addLog(error);
+      } finally {
+        addLog('fin. 이용해주셔서 감사합니다.');
+      }
+    });
+
+    // Event
+    fileInput.addEventListener('change', () => {
+      log.innerHTML = '';
+
+      console.log(fileInput.files)
+      const file = fileInput.files[0];
+
+      selectedFile = file;
+
+      const reader = new FileReader();
+      reader.addEventListener('load', e => {
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+      });
+      reader.readAsDataURL(file);
+    });
+
+    // 사진 삭제
+    photoList.addEventListener('click', async e => {
+      // console.log(e.target.dataset.filename);
+      // console.log(e.target.nodeName);
+      // console.log(e.target.classList.contains('delete-btn'));
+      if (!e.target.classList.contains('delete-btn')) return;
+
+      const filename = e.target.dataset.filename;
+
+      const response = await fetch(
+        `${BASE_URL}/api/photos/${filename}`,
+        {
+          method: 'DELETE'
+        }
+      );
+
+      // 보내는 주소가 잘못되거나, 서버가 거절하거나 등등 문제가 발생하면..
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error);
+      }
+
+      alert('삭제 완료');
+      loadPhotoList();
+
+      // if (response.ok) {
+      //   alert('삭제 완료');
+      //   loadPhotoList();
+      // } else {
+      //   alert('삭제 실패');
+      // }
+    });
+
+    // Functions
+    // 1. 사진 업로드
+    async function uploadPhoto(file) {
+      const formData = new FormData(); // 택배상자
+      formData.append('photo', file);
+      // 택배상자(formData)에 이름표('photo')를 붙이고 내용물(file)을 담음
+
+      // 보내기
+      // fetch로 서버에 실제로 요청 보내기
+      // /api/upload 주소로 택배상자 보내기
+      // fetch는 Promise를 리턴하는 함수
+      const response = await fetch(
+        `${BASE_URL}/api/upload`, // 주소
+        {
+          method: 'POST', // POST는 저장(전송)하는 메서드
+          body: formData
+        }
+      );
+
+      // 보내는 주소가 잘못되거나, 서버가 거절하거나 등등 문제가 발생하면..
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error);
+      }
+
+      // 성공
+      const data = await response.json();
+      addLog(data.message);
+      return data.photoId;
+    }
+
+    // 2. 액자 선택
+    async function chooseFrame(photoId) {
+      const response = await fetch(
+        `${BASE_URL}/api/choose-frame`,
+        {
+          method: 'POST', // 저장(전송)
+          headers: {
+            'Content-Type': 'application/json'
+            // 보낼 데이터가 JSON이라고 서버에 알려줌
+          },
+          body: JSON.stringify({ photoId })
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error);
+      }
+
+      // 성공
+      const data = await response.json();
+      addLog(data.message);
+      return data.orderId;
+    }
+
+    // 3. 배송 요청
+    async function requestDelivery(orderId) {
+      const response = await fetch(
+        `${BASE_URL}/api/delivery`,
+        {
+          method: 'POST', // 저장(전송)
+          headers: {
+            'Content-Type': 'application/json'
+            // 보낼 데이터가 JSON이라고 서버에 알려줌
+          },
+          body: JSON.stringify({ orderId })
+        }
+      );
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error);
+      }
+
+      // 성공
+      const data = await response.json();
+      return data.message;
+    }
+
+    async function loadPhotoList() {
+      const response = await fetch(`${BASE_URL}/api/photos`);
+      const data = await response.json();
+
+      // data.photos.forEach(filename => {
+      //   const figure = document.createElement('figure');
+      //   const img = document.createElement('img');
+      //   const btn = document.createElement('button');
+      //   img.src = `${BASE_URL}/uploads/${filename}`;
+      //   btn.textContent = '삭제';
+      //   btn.classList.add('delete-btn');
+      //   btn.dataset.filename = filename;
+      //   figure.dataset.filename = filename;
+      //   figure.append(img, btn);
+      //   photoList.append(figure);
+      // });
+
+      // let template = '';
+      // data.photos.forEach(filename => {
+      //   template += `
+      //     <figure>
+      //       <img src="${BASE_URL}/uploads/${filename}" alt="">
+      //       <button class="delete-btn" data-filename="${filename}">삭제</button>
+      //     </figure>
+      //   `;
+      // });
+      // photoList.innerHTML = template;
+
+      const template = [];
+      data.photos.forEach(filename => {
+        const str = `
+          <figure>
+            <img src="${BASE_URL}/uploads/${filename}" alt="">
+            <button class="delete-btn" data-filename="${filename}">삭제</button>
+          </figure>
+        `;
+        template.push(str);
+      });
+      // console.log(template.join(''));
+      photoList.innerHTML = template.join('');
+    }
+
+    function addLog(text) {
+      const li = document.createElement('li');
+      li.textContent = text;
+      log.append(li);
+    }
+  </script>
+</body>
+</html>
