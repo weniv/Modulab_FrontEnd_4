@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>직접 실습해보기!</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <script type="text/babel">
+
+        fetch('https://api.wenivops.co.kr/services/open-market/products/')
+            .then(response => response.json())
+            .then(data => {
+                function ProductItem({ product }) {
+                    return (
+                        <div>
+                            <img src={product.image} alt={product.name} />
+                            <h2>{product.name}</h2>
+                            <p>{product.info}</p>
+                            <p>{product.price.toLocaleString()}원</p>
+                        </div>
+                    );
+                }
+
+                function Card() {
+                    console.log(data);
+                    return (
+                        <div>
+                            {data.results.map(product => (
+                                <ProductItem product={product} />
+                            ))}
+                        </div>
+                    );
+                }
+
+                const app = (
+                    <Card/>
+                );
+
+                const domContainer = document.querySelector('#root');
+                const root = ReactDOM.createRoot(domContainer);
+                root.render(app, domContainer);
+            })
+    </script>
+</body>
+</html>

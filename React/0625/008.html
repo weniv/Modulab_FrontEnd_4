@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>직접 실습해보기!</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <script type="text/babel">
+        function One(a, b) {
+            return (
+                <main>{a} {b}</main>
+            );
+        }
+
+        function Two({ c, d }) {
+            return (
+                <section>{c} {d}</section>
+            );
+        }
+
+        function f() {
+            return 100
+        }
+
+        const app = (
+            <div>
+                {One('하나', '둘')}
+                <Two c="셋" d="넷"/>
+                {console.log('hello')}
+                {1 + 1}
+                {'hello' + 'world'}
+                {'<br>'}
+                {f()}
+                {true ? 'one' : 'two'}
+            </div>
+        );
+
+        const domContainer = document.querySelector('#root');
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(app, domContainer);
+    </script>
+</body>
+</html>

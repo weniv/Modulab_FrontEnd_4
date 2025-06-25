@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>직접 실습해보기!</title>
+</head>
+<body>
+    <div id="root">
+        <!-- 헤더 -->
+        <!-- <header>
+            <nav>
+                <ul>
+                    <li><a href="#">one</a></li>
+                    <li><a href="#">two</a></li>
+                    <li><a href="#">three</a></li>
+                </ul>
+            </nav>
+        </header> -->
+        <!--// 헤더 끝 -->
+
+        <!-- 본문 내용 -->
+        <!-- <main>
+            <h2>직접 실습해보기!</h2>
+            <p>리액트 컴포넌트를 직접 작성하고 랜더링해보세요.</p>
+            <p>위의 메뉴바에서 리액트 공식문서와 컴포넌트 랜더링하기에 대한 내용을 참고할 수 있습니다.</p>
+        </main> -->
+        <!--// 본문 내용 끝 -->
+
+        <!-- 푸터 -->
+        <!-- <footer>
+            <p>리액트 실습 페이지</p>
+        </footer> -->
+        <!--// 푸터 끝 -->
+    </div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <script type="text/babel">
+        function Header() {
+            return (
+                <header>난 헤더다!</header>
+            );
+        }
+        function Main() {
+            return (
+                <main>난 메인이다!</main>
+            );
+        }
+        function Footer() {
+            return (
+                <footer>난 푸터다!</footer>
+            );
+        }
+        const app = (
+            <div>
+                <Header/>
+                <Main/>
+                <Footer/>
+            </div>
+        );
+
+        // DOM에 리액트 컴포넌트 랜더링하기
+
+        const domContainer = document.querySelector('#root');
+        const root = ReactDOM.createRoot(domContainer);
+        root.render(app, domContainer);
+    </script>
+</body>
+</html>

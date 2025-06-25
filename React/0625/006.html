@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>잠시 바닐라로 바꿔보기!</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+        const root = document.querySelector('#root')
+
+        function Header() {
+            return `
+                <header>난 헤더다!</header>
+            `;
+        }
+        function Main() {
+            return `
+                <main>난 메인이다!</main>
+            `;
+        }
+        function Footer() {
+            return `
+                <footer>난 푸터다!</footer>
+            `;
+        }
+        const app = (
+            `
+            <div>
+                ${Header()}
+                ${Main()}
+                ${Footer()}
+            </div>
+            `
+        );
+
+        root.innerHTML = app;
+    </script>
+</body>
+</html>
