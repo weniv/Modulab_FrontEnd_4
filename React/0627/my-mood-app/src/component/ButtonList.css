@@ -1,0 +1,23 @@
+.container-list {
+    height: 250px;
+    width: 250px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.btn-item {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.btn-item:hover {
+    background-color: yellowgreen;
+}

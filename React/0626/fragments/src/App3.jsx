@@ -10,8 +10,8 @@ function Resume(props) {
     let good = 0;
 
     function clickLike() {
-        // like += 1;
-        setLike(like + 1);
+        like += 1;
+        // setLike(like + 1);
         console.log(like);
     }
 

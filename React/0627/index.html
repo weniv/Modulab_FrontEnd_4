@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="greeting">
+        Hello <i>재현</i>. Welcome!
+    </h1>
+
+    <div id="root" class="container">
+        <h1>hello react clone</h1>
+        <a href="https://www.test.com">test site<a>
+    </div>
+
+    <script>
+        function createComponent() {
+            const h1 = document.createElement('h1');
+            h1.innerHTML = '';
+            h1.classList.add('greeting');
+            h1.append(document.createTextNode('Hello '));
+            const elI = document.createElement('i');
+            elI.append(document.createTextNode('재현'));
+            h1.append(elI);
+            h1.append(document.createTextNode('. Welcome!'));
+            return h1
+        }
+
+        createComponent();
+
+        // <div id="root" class="container">
+        //     <h1>hello react clone</h1>
+        //     <a href="https://www.test.com">test site<a>
+        // </div>
+        function diff() {
+
+        }
+        const tag = {
+            tag: 'div',
+            props: {
+                id: 'root',
+                className: "container"
+            },
+            children: [
+                {
+                    tag: 'h1',
+                    props: {},
+                    children: [
+                        'hello react clone'
+                    ]
+                },
+                {
+                    tag: 'a',
+                    props: { href: "https://www.test.com" },
+                    children: [
+                        'test site'
+                    ]
+                }
+            ]
+        }
+
+        // <h1 class="greeting">
+        //     Hello <i>재현</i>. Welcome!
+        // </h1>
+
+
+        function createComponent() {
+            const h1 = document.createElement('h1');
+            h1.innerHTML = '';
+            h1.classList.add('greeting');
+            h1.append(document.createTextNode('Hello '));
+            const elI = document.createElement('i');
+            elI.append(document.createTextNode('재현'));
+            h1.append(elI);
+            h1.append(document.createTextNode('. Welcome!'));
+            return h1;
+        }
+
+        createComponent();
+
+
+        function createVDOM() {
+            return React.createElement(
+                // 첫번째 인자는 요소, 두번째 인자는 프로퍼티, 세번째인자 이후는 자식노드
+                'h1', { className: 'greeting' }, 'Hello', React.createElement('i', null, '재현'), '. Welcome!'
+            );
+        }
+
+        function createJSXComponent() {
+            return (
+                <h1 class="greeting">
+                    Hello <i>재현</i>. Welcome!
+                </h1>
+            );
+        }
+
+    </script>
+</body>
+
+</html>
