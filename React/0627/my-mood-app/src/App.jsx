@@ -7,11 +7,13 @@ function App() {
 
     const [currentMood, setCurrentMood] = useState("");
 
+    console.log(currentMood);
+
     return (
-        <article className="app-main">
+        <article className="app-main" >
             <h1>오늘의 기분을 선택해주세요 😄</h1>
             <ButtonList setCurrentMood={setCurrentMood} />
-            <DisplayMood />
+            <DisplayMood currentMood={currentMood} />
         </article>
     )
 }

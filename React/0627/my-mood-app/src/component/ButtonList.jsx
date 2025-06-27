@@ -8,7 +8,7 @@ function ButtonList({ setCurrentMood }) {
             {menus.map((moodEl, index) => {
                 return (
                     <li key={index}>
-                        <button className="btn-item">{moodEl}</button>
+                        <button className="btn-item" onClick={() => setCurrentMood(moodEl)}>{moodEl}</button>
                     </li>
                 )
             })}
