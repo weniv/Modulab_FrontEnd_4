@@ -1,11 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import styles from './main.module.css';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <h1 className={styles.myHead}>hello</h1>
         <App />
     </StrictMode>,
 )

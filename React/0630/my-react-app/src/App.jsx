@@ -1,3 +1,4 @@
+
 function App() {
 
   return (
@@ -9,7 +10,7 @@ function App() {
   )
 }
 
-function Hello({name}) {
+function Hello({ name }) {
   return (
     <div>Hello, {name}!</div>
   )
