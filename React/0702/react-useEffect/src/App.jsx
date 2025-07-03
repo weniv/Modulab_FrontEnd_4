@@ -1,35 +1,34 @@
-import { useState, useEffect } from 'react'
 
-function Counter() {
-    const [count, setCount] = useState(0)
-    const handleCountUp = (e) => {
-        setCount(count + 1)
-    }
+import React, { useState, useEffect } from 'react';
 
-    //count가 변했을때 동작할 행동을 useEffect를 이용해 구현
+function Time(props) {
+    const [today, setToday] = useState(new Date());
+    const hour = today.getHours();
+    const min = today.getMinutes();
+    const sec = today.getSeconds();
+
+    console.log("렌더링이 됩니다..?");
+
     useEffect(() => {
-        if (count % 2) {
-            alert("홀수입니다")
-        } else {
-            alert("짝수입니다")
-        }
-        // return () => {
-        //     alert("컴포넌트가 사라집니다.")
-        // }
-    }, [count]);
+        const intervalId = setInterval(() => {
+            const t = new Date();
+            setToday(t);
+        }, 1000);
+    }, []);
 
     return (
-        <>
-            <div>{count}</div>
-            <button onClick={handleCountUp}>Up!</button>
-        </>
-    )
+        <div>
+            <h1>
+                시간 : {hour}시 {min}분 {sec}초
+            </h1>
+        </div>
+    );
 }
 
 function App() {
     return (
-        <div className="App">
-            <Counter />
+        <div>
+            <Time />
         </div>
     );
 }
