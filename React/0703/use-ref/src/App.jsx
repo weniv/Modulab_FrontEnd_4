@@ -1,46 +1,46 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 
-const App = () => {
-    const [emailValue, setEmailValue] = useState(""); // email state 값
-    const [pwValue, setPwValue] = useState(""); // pw state 값
+export default function Stopwatch() {
+    // 시작한 시간
+    const startTime = useRef(0);
+    // 현재 시간 
+    // const [now, setNow] = useState(null);
+    const [secondsPassed, setSecondsPassed] = useState(0);
 
-    const emailInput = useRef(null);
-    const pwInput = useRef(null);
+    // 인터벌함수의 id
+    const intervalId = useRef(null);
 
-    const inputCheck = (e) => {
-        e.preventDefault();
-        if (emailInput.current.value === "") {
-            alert("이메일을 입력해주세요");
-            emailInput.current.focus();
-            return; // if, else 문에 들어오게 되면 setState 실행없이 바로 return
-        } else if (pwInput.current.value === "") {
-            alert("비밀번호를 입력해주세요");
-            pwInput.current.focus();
-            return;
-        }
-        console.log(emailInput);
-        console.log(pwInput);
 
-        setEmailValue(emailInput.current.value);
-        setPwValue(pwInput.current.value);
-    };
+    function handleStart() {
+        // 10시 10분 5초 --> 시작버튼
+        // 10시 10분 15초 --> 스탑버튼
+        // 30초가 흐른 후 : 10시 10분 45초
+        // 10시 10분 45초 --> 시작버튼
+
+        // 10시 10분 35초
+
+        startTime.current = Date.now() - secondsPassed;
+
+        intervalId.current = setInterval(() => {
+            setSecondsPassed((Date.now() - startTime.current)); // 기본 단위가 밀리세컨드이기 때문에 초단위로 표현하기 위해서 1000을 나눕니다.
+        }, 10);
+    }
+
+    function handleStop() {
+        clearInterval(intervalId.current);
+    }
+
+    function handleReset() {
+        setSecondsPassed(0);
+        clearInterval(intervalId.current);
+    }
 
     return (
-        <form onSubmit={inputCheck} style={{ display: "flex", flexDirection: "column" }}>
-            <label>
-                이메일 : <input type="email" ref={emailInput} />
-            </label>
-            <label>
-                비밀번호 : <input type="password" ref={pwInput} />
-            </label>
-
-            <button type="submit" style={{ width: "100px" }} >
-                로그인
-            </button>
-            <span>입력한 이메일 : {emailValue}</span>
-            <span>입력한 비밀번호 : {pwValue}</span>
-        </form>
+        <>
+            <h1>Time passed: {secondsPassed.toFixed(3) / 1000}</h1>
+            <button onClick={handleStart}>Start</button>
+            <button onClick={handleStop}>Stop</button>
+            <button onClick={handleReset}>reset</button>
+        </>
     );
-};
-
-export default App;
+}

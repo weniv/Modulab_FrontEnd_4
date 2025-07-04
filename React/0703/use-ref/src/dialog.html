@@ -5,30 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #myDialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
 </head>
 
 <body>
     <button id="dialogBtn">나와라 모달</button>
     <dialog id="myDialog">
-        <!-- <form method="dialog"> -->
-        <h2>Dialog</h2>
-        <p>This is HTML dialog</p>
-        <button>OK!</button>
+        <form method="dialog">
+            <h2>Dialog</h2>
+            <p>계속 진행하시겠습니다?</p>
 
-        <!-- </form> -->
+            <button value="no">아니오</button>
+            <button value="yes">네</button>
+        </form>
     </dialog>
 
     <script>
         const dialog = document.querySelector('#myDialog');
         const dialogBtn = document.querySelector('#dialogBtn');
-        const closeBtn = document.querySelector('#myDialog button');
+        // const closeBtn = document.querySelector('#myDialog button');
 
         dialogBtn.addEventListener('click', () => {
-            dialog.show();
+            dialog.showModal();
         });
 
-        closeBtn.addEventListener('click', () => {
-            dialog.close();
+        // closeBtn.addEventListener('click', () => {
+        //     dialog.close();
+        // });
+
+        dialog.addEventListener('close', () => {
+            console.log('모달 값: ', dialog.returnValue);
         });
 
     </script>
