@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { CartContext, useCart } from "./CartProvider";
+
 function ProductList() {
+
+    const { addToCart } = useCart();
 
     const products = [
         { id: 1, name: "노트북", price: 1000 },
@@ -13,7 +18,7 @@ function ProductList() {
             <ul>
                 {products.map((item) => (
                     <li key={item.id}>
-                        {item.name} - ₩{item.price} <button>카트에 추가</button>
+                        {item.name} - ₩{item.price} <button onClick={() => addToCart(item)}>카트에 추가</button>
                     </li>
                 ))}
 
