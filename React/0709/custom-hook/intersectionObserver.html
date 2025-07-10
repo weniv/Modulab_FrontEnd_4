@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const options = {
+            root: null,
+            threshold: 0
+        };
+
+        const callback = (entries) => {
+            entries.forEach((entry) => {
+                // isIntersection: 두 요소가 겹쳤는가?,
+                // intersectionRatio: 두 요소가 몇 % 만큼 겹쳤는가?
+                console.log(entry.isIntersection, entry.intersectionRatio);
+            });
+        }
+
+        const observer = new IntersectionObserver(callback, options);
+
+        // 관찰 시작
+        observer.observe(target);
+
+        // 타겟 관찰 종료
+        observer.unobserve(target);
+
+        // 모든 요소에 대한 관찰 중지
+        observer.disconnect();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="searchInput" placeholder="검색어를 입력해주세요">
+
+    <script>
+        const inp = document.querySelector('#searchInput');
+
+        function debounce(callback, delay) {
+            let timeoutId;
+
+            return () => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    callback();
+                }, delay);
+            }
+        }
+
+        const debounceSearch = debounce(() => {
+            console.log('검색 실행 로직 작동');
+        }, 300);
+
+
+        inp.addEventListener('input', () => {
+            debounceSearch();
+        });
+    </script>
+</body>
+
+</html>
