@@ -1,71 +1,115 @@
-import { useState } from 'react';
+import { useState, useActionState, useRef } from 'react';
 
 
 function Login() {
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
+    // const [userName, setUserName] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [message, setMessage] = useState('');
+    // const [isLoading, setIsLoading] = useState(false);
+    const formRef = useRef(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // 폼의 기본 제출 동작 방지
+    const [state, formAction, isPending] = useActionState(
+        async (previousState, formData) => {
+            const userName = formData.get('userName');
+            const password = formData.get('password');
 
-        if (!userName || !password) {
-            setMessage('아이디와 비밀번호를 모두 입력해주세요.');
-            return;
-        }
-
-        setIsLoading(true);
-        setMessage('');
-
-        try {
-            const response = await fetch('http://localhost:3001/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userName: userName,
-                    password: password
-                })
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                setMessage(`로그인 성공! ${result.user.userName}님 환영합니다.`);
-            } else {
-                setMessage(result.message || '로그인에 실패했습니다.');
+            if (!userName || !password) {
+                return { success: false, message: '아이디와 비밀번호를 모두 입력해주세요.', user: null }
             }
 
-        } catch (error) {
-            setMessage(`서버 연결 실패: ${error.message}`);
-        } finally {
-            setIsLoading(false);
-        }
-    };
+            try {
+                const response = await fetch('http://localhost:3001/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userName: userName,
+                        password: password
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // setMessage(`로그인 성공! ${result.user.userName}님 환영합니다.`);
+                    return { success: true, message: `로그인 성공! ${result.user.userName}님 환영합니다.`, user: result.user }
+                } else {
+                    // setMessage(result.message || '로그인에 실패했습니다.');
+                    return { success: false, message: result.message || '로그인에 실패했습니다.', user: null }
+                }
+
+            } catch (error) {
+                // setMessage(`서버 연결 실패: ${error.message}`);
+                return { success: false, message: `서버 연결 실패: ${error.message}`, user: null }
+            }
+        }, { success: false, message: '', user: null }
+    );
+
+
+
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault(); // 폼의 기본 제출 동작 방지
+
+    //     if (!userName || !password) {
+    //         setMessage('아이디와 비밀번호를 모두 입력해주세요.');
+    //         return;
+    //     }
+
+    //     setIsLoading(true);
+    //     setMessage('');
+
+    //     try {
+    //         const response = await fetch('http://localhost:3001/login', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({
+    //                 userName: userName,
+    //                 password: password
+    //             })
+    //         });
+
+    //         const result = await response.json();
+
+    //         if (response.ok) {
+    //             setMessage(`로그인 성공! ${result.user.userName}님 환영합니다.`);
+    //         } else {
+    //             setMessage(result.message || '로그인에 실패했습니다.');
+    //         }
+
+    //     } catch (error) {
+    //         setMessage(`서버 연결 실패: ${error.message}`);
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
 
     const handleReset = () => {
-        setUserName('');
-        setPassword('');
-        setMessage('');
+        // setUserName('');
+        // setPassword('');
+        // setMessage('');
+        formRef.current.reset();
     };
 
     return (
         <div>
             <h2>로그인</h2>
 
-            <form onSubmit={handleSubmit}>
+            <form ref={formRef} action={formAction}>
                 <div>
                     <label htmlFor="userName">
                         아이디:
                         <input
                             id="userName"
+                            name="userName"
                             type="text"
-                            value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
+                            // value={userName}
+                            // onChange={(e) => setUserName(e.target.value)}
                             placeholder="아이디를 입력하세요"
-                            disabled={isLoading}
+                            disabled={isPending}
                             required
                         />
                     </label>
@@ -76,28 +120,29 @@ function Login() {
                         비밀번호:
                         <input
                             id="password"
+                            name='password'
                             type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            // value={password}
+                            // onChange={(e) => setPassword(e.target.value)}
                             placeholder="비밀번호를 입력하세요"
-                            disabled={isLoading}
+                            disabled={isPending}
                             required
                         />
                     </label>
                 </div>
 
                 <div>
-                    <button type="submit" disabled={isLoading}>
-                        {isLoading ? '로그인 중...' : '로그인'}
+                    <button type="submit" disabled={isPending}>
+                        {isPending ? '로그인 중...' : '로그인'}
                     </button>
-                    <button type="button" onClick={handleReset} disabled={isLoading}>
+                    <button type="button" onClick={handleReset} disabled={isPending}>
                         초기화
                     </button>
                 </div>
             </form>
-            {message && (
+            {state.message && (
                 <div>
-                    <p>{message}</p>
+                    <p>{state.message}</p>
                 </div>
             )}
         </div>
