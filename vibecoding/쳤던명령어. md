@@ -1,0 +1,39 @@
+# 설치
+
+참고 문서: https://apidog.com/kr/blog/gemini-cli-setup-guide-kr/
+
+## 권장방법
+* 중간에 Ok to proceed? 라는 질문이 나오면 y 입력
+```
+npm install -g @google/gemini-cli
+```
+
+## 설치 중 로그인
+* 1번 선택
+```
+1. Login with Google
+2. Use Gemini API Key
+3. Vertex AI
+```
+
+## 실행
+```
+gemini
+```
+
+## 사용법
+* 한국어로 대화 가능
+* 명령어 실행 후에는 항상 2번째 실행을 다 하게하는 옵션 선택해서 진행합니다.
+
+```
+/help: 전체 명령어
+/tools: 사용 가능한 AI 도구 목록
+/session: 세션 정보
+Shell 모드 전환:
+    * !입력 1번: 쉘 모드 전환
+    * !입력 2번: 쉘 모드 종료(입력모드)
+/quit: 종료
+```
+
+## 후기
+* 너무 자주 저에게 묻습니다. => 불편
