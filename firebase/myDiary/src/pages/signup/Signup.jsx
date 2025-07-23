@@ -1,5 +1,6 @@
 import React, { useActionState } from 'react'
 import styles from '../login/Login.module.css'
+import { useSignup } from '../../hooks/useSignup';
 
 
 function signupAction(prevState, fromData) {
@@ -8,12 +9,14 @@ function signupAction(prevState, fromData) {
     const displayName = formData.get('displayName');
 
     console.log(email, password, displayName);
+
+    const signup = useSignup();
+
+    signup(email, password, displayName);
 }
 
 
 export default function Signup() {
-
-
 
     const [state, fromAction, isPending] = useActionState(signupAction, {
         success: false,
