@@ -1,7 +1,10 @@
 import { appAuth } from "../firebase/config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
+    const { dispatch } = useAuthContext();
+
     const signup = (email, password, displayName) => {
 
         createUserWithEmailAndPassword(appAuth, email, password)
@@ -15,7 +18,9 @@ export const useSignup = () => {
 
                 updateProfile(appAuth.currentUser, { displayName })
                     .then(() => {
-                        // 회원 별명 등록 완료
+
+                        dispatch({ type: 'login', payload: user });
+
                     }).catch((error) => {
                         onsole.error(error);
                     });

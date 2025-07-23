@@ -88,14 +88,14 @@ export default function Signup() {
                 </h2>
 
                 <form className={styles["form-wrap"]} action={fromAction}>
-                    <label className="label-style" for="user-email">이메일</label>
+                    <label className="label-style" htmlFor="user-email">이메일</label>
                     <input name='email' className="input-style" id="user-email" type="email" required />
 
-                    <label className="label-style" for="user-pw">비밀번호</label>
+                    <label className="label-style" htmlFor="user-pw">비밀번호</label>
                     <input name='password' className="input-style" id="user-pw" type="password" required />
 
-                    <label class="label-style" for="user-nickname">닉네임</label>
-                    <input name='displayName' class="input-style" id="user-nickname" type="text" required></input>
+                    <label className="label-style" htmlFor="user-nickname">닉네임</label>
+                    <input name='displayName' className="input-style" id="user-nickname" type="text" required></input>
 
                     <button className="black-btn" type="submit">회원가입</button>
                 </form>
