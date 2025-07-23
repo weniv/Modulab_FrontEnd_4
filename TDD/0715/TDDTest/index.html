@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        article {
+            display: inline-block;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .viewer {
+            display: block;
+            font-size: 24px;
+            color: teal;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <strong class="viewer"></strong>
+        <input type="text" class="inp-txt">
+        <button class="btn-push">적용</button>
+    </article>
+
+    <script src="TextManager.js"></script>
+    <script src="ViewManager.js"></script>
+    <script>
+        (() => {
+            const viewer = document.querySelector('.viewer');
+            const inpTxt = document.querySelector('.inp-txt');
+            const btn = document.querySelector('.btn-push');
+
+            const textManger = new TextManager();
+
+            const viewManager = new ViewManager(textManger, { viewer, inpTxt, btn });
+
+            viewManager.updateView();
+        })();
+    </script>
+</body>
+
+</html>
