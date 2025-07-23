@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useActionState } from 'react'
 import styles from './Login.module.css'
 
+
+function loginAction(prevState, fromData) {
+    const email = fromData.get('email');
+    const password = fromData.get('password');
+
+    console.log(email, password);
+}
+
+
 export default function Login() {
+
+    const [state, fromAction, isPending] = useActionState(loginAction, {
+        success: false,
+        message: '',
+        user: null
+    });
+
     return (
         <>
             <main>
@@ -65,12 +81,12 @@ export default function Login() {
                     <strong className={styles.line}>로그인</strong>
                 </h2>
 
-                <form className={styles["form-wrap"]}>
+                <form className={styles["form-wrap"]} action={fromAction}>
                     <label className="label-style" for="user-email">이메일</label>
-                    <input className="input-style" id="user-email" type="email" required />
+                    <input name='email' className="input-style" id="user-email" type="email" required />
 
                     <label className="label-style" for="user-pw">비밀번호</label>
-                    <input className="input-style" id="user-pw" type="password" required />
+                    <input name='password' className="input-style" id="user-pw" type="password" required />
 
                     <button className="black-btn" type="submit">로그인</button>
                 </form>
