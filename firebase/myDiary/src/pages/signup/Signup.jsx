@@ -3,9 +3,9 @@ import styles from '../login/Login.module.css'
 import { useSignup } from '../../hooks/useSignup';
 
 
-function signupAction(prevState, fromData) {
-    const email = fromData.get('email');
-    const password = fromData.get('password');
+function signupAction(prevState, formData) {
+    const email = formData.get('email');
+    const password = formData.get('password');
     const displayName = formData.get('displayName');
 
     console.log(email, password, displayName);

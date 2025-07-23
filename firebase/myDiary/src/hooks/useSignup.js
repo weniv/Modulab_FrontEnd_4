@@ -1,5 +1,5 @@
 import { appAuth } from "../firebase/config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export const useSignup = () => {
     const signup = (email, password, displayName) => {
