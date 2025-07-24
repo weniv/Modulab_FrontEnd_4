@@ -1,22 +1,30 @@
-import React, { useActionState } from 'react'
-import styles from './Login.module.css'
-
-
-function loginAction(prevState, fromData) {
-    const email = fromData.get('email');
-    const password = fromData.get('password');
-
-    console.log(email, password);
-}
+import React from 'react'
+import styles from '../login/Login.module.css'
+import { useState } from 'react'
+import { useLogin } from '../../hooks/useLogin';
 
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-    const [state, fromAction, isPending] = useActionState(loginAction, {
-        success: false,
-        message: '',
-        user: null
-    });
+    const { error, isPending, login } = useLogin();
+
+    const handleData = (event) => {
+        if (event.target.type === "email") {
+            setEmail(event.target.value);
+        } else if (event.target.type === "password") {
+            setPassword(event.target.value);
+        }
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        login(email, password);
+
+    }
+
 
     return (
         <>
@@ -70,7 +78,7 @@ export default function Login() {
                         </g>
                         <path
                             d="M73.6878 13.512C74.0078 13.448 74.2638 13.4267 74.4558 13.448C74.6478 13.448 74.9465 13.5227 75.3518 13.672C75.5652 13.736 75.7465 13.8107 75.8958 13.896C76.0452 13.9813 76.1945 14.088 76.3438 14.216C76.4932 14.344 76.6745 14.5253 76.8878 14.76C77.4212 15.3147 77.8158 15.7733 78.0718 16.136C78.2852 16.456 78.4772 16.6267 78.6478 16.648C78.8398 16.648 78.9785 16.4987 79.0638 16.2C79.2772 15.6027 79.6825 15.016 80.2798 14.44C80.8772 13.864 81.6132 13.5653 82.4878 13.544C83.3625 13.5013 83.9385 13.7573 84.2158 14.312C84.3438 14.568 84.4612 14.76 84.5678 14.888C84.6958 15.08 84.8772 15.656 85.1118 16.616C85.1758 17 85.1332 17.416 84.9838 17.864C84.8772 18.2053 84.6958 18.824 84.4398 19.72C83.8852 21.64 83.3198 22.9413 82.7438 23.624C82.5518 23.88 82.2852 24.2213 81.9438 24.648C81.7092 24.968 81.4425 25.224 81.1438 25.416C80.7812 25.6293 80.0985 26.1947 79.0958 27.112C78.5838 27.56 78.1145 27.688 77.6878 27.496C77.4745 27.4107 77.3678 27.3253 77.3678 27.24C77.3678 27.176 76.9838 26.7387 76.2158 25.928C75.4478 25.1173 74.9572 24.5413 74.7438 24.2C74.5092 23.816 74.1252 23.3147 73.5918 22.696C73.3358 22.376 73.1332 22.1307 72.9838 21.96C72.8558 21.7893 72.7278 21.608 72.5998 21.416C72.4718 21.224 72.3545 21.0427 72.2478 20.872C72.1625 20.7013 72.0452 20.456 71.8958 20.136C71.4265 19.2613 71.1385 18.344 71.0318 17.384C70.9892 16.872 71.0852 16.3387 71.3198 15.784C71.5545 15.2293 71.8852 14.7493 72.3118 14.344C72.7598 13.9173 73.2185 13.64 73.6878 13.512Z"
-                            fill="#FF4F6E" className="svg-heart" />
+                            fill="#FF4F6E" class="svg-heart" />
                         <defs>
                             <clipPath id="clip0_73192_4246">
                                 <rect width="156" height="75" fill="white" />
@@ -81,14 +89,18 @@ export default function Login() {
                     <strong className={styles.line}>로그인</strong>
                 </h2>
 
-                <form className={styles["form-wrap"]} action={fromAction}>
-                    <label className="label-style" for="user-email">이메일</label>
-                    <input name='email' className="input-style" id="user-email" type="email" required />
+                <form className={styles["form-wrap"]} onSubmit={handleSubmit}>
+                    <label className="label-style" htmlFor="user-email">이메일</label>
+                    <input className="input-style" id="user-email" type="email" required onChange={handleData} value={email} />
 
-                    <label className="label-style" for="user-pw">비밀번호</label>
-                    <input name='password' className="input-style" id="user-pw" type="password" required />
+                    <label className="label-style" htmlFor="user-pw">비밀번호</label>
+                    <input className="input-style" id="user-pw" type="password" required onChange={handleData} value={password} autoComplete='currnet-password' />
 
-                    <button className="black-btn" type="submit">로그인</button>
+                    {/* 조건부 랜더링을 사용합니다. 로그인이 진행 전이라면 로그인 버튼을 노출하고 */}
+                    {!isPending && <button className="black-btn" type="submit">로그인</button>}
+                    {/* 로그인이 진행 중이라면 로그인 버튼을 제거하고 정보를 표시합니다. */}
+                    {isPending && <strong>로그인이 진행중입니다...</strong>}
+                    {error && <strong>{error}</strong>}
                 </form>
             </main>
 
